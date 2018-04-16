@@ -34,6 +34,73 @@ folder = raw_input('Enter a folder name: ')
 os.system("ls -la %s" % folder)
 ```
 
+### Java
+```java
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+String folder = br.readLine();
+
+Runtime rt = Runtime.getRuntime();
+Process pr = rt.exec("ls -la " + folder);
+```
+
+## Como se previnir
+
+Para evitar que um atacante seja capaz de inserir caracteres especiais no comando, você deve tentar evitar as chamadas do sistema sempre que possível. Em todas as circunstâncias, evite qualquer tipo de usar entradas do usuário, a menos que seja absolutamente necessário. Desative a chamada de funções diretamente no sistema. Em algumas linguagens de programação, você pode separar a execução do processo dos parâmetros de entrada. Você também pode criar uma lista de possíveis entradas e validar seu formato. Por exemplo, inteiro para um ID numérico.
+
+### Permissões
+
+Na máquina onde a aplicação está hospedada, as permissões dos diretórios e arquivos devem estar bem definidas, para que apenas usuários autorizados possam modificar os arquivos.
+
+No linux, o comando para definir as permissões de arquivos e diretórios é o `chmod`. Esse comando espera um argumento com três dígitos, que são:
+
+1. Owner (você)
+2. Group (seu grupo de usuários)
+3. World (qualquer outra pessoa navegando pelo sistema de arquivos)
+
+Cada dígito desse código envia as permissões para cada um desses grupos como o seguinte: Leitura é 4; Escrita é 2; Execução é 1.
+
+As somas desses números fornecem combinações dessas permissões:
+
+- 0 = sem permissão alguma; essa pessoa não pode ler, gravar ou executar o arquivo
+- 1 = executar apenas
+- 2 = somente escrita
+- 3 = escrever e executar (1 + 2)
+- 4 = somente leitura
+- 5 = ler e executar (4 + 1)
+- 6 = ler e escrever (4 + 2)
+- 7 = ler, escrever e executar (4 + 2 + 1)
+
+#### Exemplo
+
+Comandos `chmod` no arquivo apple.txt
+
+| Comando             | Propósito                                                                    |
+|---------------------|------------------------------------------------------------------------------|
+| chmod 700 apple.txt | Só você pode ler, escrever ou executar apple.txt                             |
+| chmod 777 apple.txt | Todos podem ler, escrever ou executar apple.txt                              |
+| chmod 744 apple.txt | Só você pode ler, escrever ou executar apple.txt; Todos podem ler apple.txt; |
+| chmod 444 apple.txt | Todos podem apenas ler apple.txt                                             |
+
+### Teste de entradas
+
+Substitua ou barre argumentos que contenham `;`, `|`, `&`, `&&` ou outros escapes disponíveis.
+
+### Boa prática em python
+
+Módulo `subprocess`: substitudo de `os.system()` e outros.
+- Funções inadequadas para iniciar processos podem significar um risco de segurança: se o programa for iniciado através do shell e os argumentos contiverem meta-caracteres do shell, o resultado poderá ser desastroso.
+- Isso faz do Python uma linguagem de substituição ainda melhor para scripts de shell complicados.
+
+#### Exemplo
+
+```python
+from subprocess import call
+folder = raw_input('Enter a folder name: ')
+call(["ls", "-la", folder])
+```
+
 ## Referências
 
 - https://www.owasp.org/index.php/Command_Injection
+- https://www.netsparker.com/blog/web-security/command-injection-vulnerability/
+- http://www.december.com/unix/ref/chmod.html
