@@ -42,7 +42,35 @@ String folder = br.readLine();
 Runtime rt = Runtime.getRuntime();
 Process pr = rt.exec("ls -la " + folder);
 ```
-## Porquer efetuar chamadas ao Sistema Operacional? 
+### Fique sempre atento nas seguintes funções.
+#### Java
+
+- runtime.exec()
+
+#### C/C++
+
+- system
+- exec
+- shellExecute
+
+#### Python
+
+- exec
+- eval
+- os.system
+- os.popen
+- subprocess.popen
+- subprocess.call
+
+#### PHP
+
+- system
+- exec
+- eval
+- shel_exec
+- proc_open
+
+### Porquer efetuar chamadas ao Sistema Operacional? 
 
 Comandos de sistema pode ajudar fazer grandes coisas com pouco código, como por exemplo, criar ou abrir uma pasta, exibir o horário do sistema, verificar em que sistema operacional o seu programa está rodando e etc. Para efetuar uma linha de comando ao sistema basta usar a função **SYSTEM** em códigos C ou C++ que está respectivamente nas bibliotecas **stdlib.h** e **cstdlib**, em Python é necessario importar a biblioteca **os** e novamente executar a função SYSTEM
 
