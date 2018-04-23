@@ -8,6 +8,10 @@ Esse ataque difere do **Code Injection**, pois a **injeção de código** permit
 
 ### C++
 
+- system
+- exec
+- shellExecute
+
 ```cpp
 // Example program
 #include <iostream>
@@ -28,6 +32,12 @@ int main() {
 ```
 
 ### Python
+
+- exec
+- eval
+- os.system
+- os.popen
+
 ```python
 import os
 folder = raw_input('Enter a folder name: ')
@@ -35,6 +45,9 @@ os.system("ls -la %s" % folder)
 ```
 
 ### Java
+
+- runtime.exec()
+
 ```java
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 String folder = br.readLine();
@@ -42,25 +55,6 @@ String folder = br.readLine();
 Runtime rt = Runtime.getRuntime();
 Process pr = rt.exec("ls -la " + folder);
 ```
-### Fique sempre atento nas seguintes funções.
-#### Java
-
-- runtime.exec()
-
-#### C/C++
-
-- system
-- exec
-- shellExecute
-
-#### Python
-
-- exec
-- eval
-- os.system
-- os.popen
-- subprocess.popen
-- subprocess.call
 
 #### PHP
 
@@ -72,13 +66,11 @@ Process pr = rt.exec("ls -la " + folder);
 
 ### Porquer efetuar chamadas ao Sistema Operacional? 
 
-Comandos de sistema pode ajudar fazer grandes coisas com pouco código, como por exemplo, criar ou abrir uma pasta, exibir o horário do sistema, verificar em que sistema operacional o seu programa está rodando e etc. Para efetuar uma linha de comando ao sistema basta usar a função **SYSTEM** em códigos C ou C++ que está respectivamente nas bibliotecas **stdlib.h** e **cstdlib**, em Python é necessario importar a biblioteca **os** e novamente executar a função SYSTEM
-
-
+Comandos de sistema pode ajudar fazer grandes coisas com pouco código, como por exemplo, criar ou abrir uma pasta, exibir o horário do sistema, verificar em que sistema operacional o seu programa está rodando e etc. Para efetuar uma linha de comando ao sistema basta usar a função **SYSTEM** em códigos C ou C++ que está respectivamente nas bibliotecas **stdlib.h** e **cstdlib**, em Python é necessario importar a biblioteca **os** e novamente executar a função SYSTEM.
 
 ## Como se previnir
 
-Para evitar que um atacante seja capaz de inserir caracteres especiais no comando, você deve tentar evitar as chamadas do sistema sempre que possível. Em todas as circunstâncias, evite qualquer tipo de usar entradas do usuário, a menos que seja absolutamente necessário. Desative a chamada de funções diretamente no sistema. Em algumas linguagens de programação, você pode separar a execução do processo dos parâmetros de entrada. Você também pode criar uma lista de possíveis entradas e validar seu formato. Por exemplo, inteiro para um ID numérico.
+Para evitar que um atacante seja capaz de inserir caracteres especiais no comando, você deve tentar **evitar as chamadas de sistema** sempre que possível. Em todas as circunstâncias, evite qualquer tipo de usar **entradas do usuário**, a menos que seja absolutamente necessário. **Desative a chamada de funções diretamente no sistema**. Em algumas linguagens de programação, você pode separar a execução do processo dos parâmetros de entrada. Você também pode criar uma **lista de possíveis entradas e validar seu formato**. Por exemplo, inteiro para um ID numérico.
 
 ### Permissões
 
@@ -103,7 +95,7 @@ As somas desses números fornecem combinações dessas permissões:
 - 6 = ler e escrever (4 + 2)
 - 7 = ler, escrever e executar (4 + 2 + 1)
 
-#### Exemplo
+#### Exemplos
 
 Comandos `chmod` no arquivo apple.txt
 
@@ -113,6 +105,8 @@ Comandos `chmod` no arquivo apple.txt
 | chmod 777 apple.txt | Todos podem ler, escrever ou executar apple.txt                              |
 | chmod 744 apple.txt | Só você pode ler, escrever ou executar apple.txt; Todos podem ler apple.txt; |
 | chmod 444 apple.txt | Todos podem apenas ler apple.txt                                             |
+
+- Recuperar as permissões de um arquivo/diretório: `stat -c %a [filename]`.
 
 ### Teste de entradas
 
@@ -131,6 +125,19 @@ from subprocess import call
 folder = raw_input('Enter a folder name: ')
 call(["ls", "-la", folder])
 ```
+
+## Injeção de comandos nos servidores gratuitos
+
+### Heroku
+
+- Recursos limitados e temporários.
+- Pode ser taestado em: http://commandinjection.herokuapp.com
+
+### Hostinger
+
+- Hospedagem compartilhada
+- Chamadas de sistema bloqueadas por padrão.
+- Pode ser testado em: http://jordao.pe.hu/
 
 ## Referências
 

@@ -4,7 +4,7 @@ João era administrador de um site onde os usuários podiam guardar arquivos, es
 
 ## Atividade I
 
-### Aquecimento: listar os arquivos do diretório onde está a página inicial dos site
+### listar os arquivos do diretório onde está a página inicial dos site
 
 ### Deletar um arquivo
 
@@ -12,6 +12,13 @@ João era administrador de um site onde os usuários podiam guardar arquivos, es
 - Liste o conteúdo desse arquivo.
 - Agora apague esse arquivo (ele está dentro da pasta "files").
 
-### Printar a saida do comando "ls" em um arquivo
+### Guardar a lista de diretórios em um arquivo
 
 ## Atividade II
+
+Usar Command Injection no sistema no heroku (http://commandinjection.herokuapp.com)
+
+- Criar um arquivo (qualquer nome) dentro da pasta "folder"
+- Escolher um diretório qualquer na raiz do servidor e listar seu conteúdo.
+
+Na estrega deve ser dito o diretório escolhido e o conteúdo existente nele.

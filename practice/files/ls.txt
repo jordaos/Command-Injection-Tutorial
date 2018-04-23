@@ -1,0 +1,10 @@
+total 44
+drwxrwxrwx 6 jordao jordao 4096 Apr 22 11:53 .
+drwxrwxrwx 6 root   root   4096 Apr 22 11:01 ..
+drwxrwxrwx 8 jordao jordao 4096 Apr 22 12:04 .git
+-rwxrwxrwx 1 jordao jordao   13 Apr 10 14:29 .gitignore
+drwxr-xr-x 2 jordao jordao 4096 Apr 22 11:09 css
+drwxrwxrwx 2 jordao jordao 4096 Apr 22 12:04 files
+-rw-rw-r-- 1 jordao jordao 6491 Apr 22 11:59 index.php
+drwxr-xr-x 2 jordao jordao 4096 Apr 22 11:10 js
+-rw-rw-r-- 1 jordao jordao 4533 Apr 22 11:56 view.php
